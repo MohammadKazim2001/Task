@@ -25,7 +25,8 @@ export const ThemeToggle = () => {
       onClick={() => setIsDark(!isDark)}
       aria-label="Toggle theme"
     >
-      {isDark ? "☀️" : "🌙"}
+      <span className={styles.toggleText}>Change theme</span>
+      <span className={styles.toggleIcon}>{isDark ? "☀️" : "🌙"}</span>
     </button>
   );
 };

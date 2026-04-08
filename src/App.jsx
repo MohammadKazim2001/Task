@@ -1,20 +1,27 @@
 import { useState, useEffect } from "react";
 import { Login } from "./components/Login/Login";
 import { Profile } from "./components/Profile/Profile";
-import { ThemeToggle } from "./components/ThemeToggle/ThemeToggle";
 import "./styles/global.scss";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // بررسی وجود کاربر در localStorage
+    // Check for user in localStorage
     const savedUser = localStorage.getItem("userData");
     if (savedUser) {
-      setUserData(JSON.parse(savedUser));
-      setIsLoggedIn(true);
+      try {
+        const parsedUser = JSON.parse(savedUser);
+        setUserData(parsedUser);
+        setIsLoggedIn(true);
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+        localStorage.removeItem("userData");
+      }
     }
+    setIsLoading(false);
   }, []);
 
   const handleLogin = (data) => {
@@ -28,9 +35,13 @@ function App() {
     setUserData(null);
   };
 
+  // Show nothing while checking localStorage
+  if (isLoading) {
+    return null; // Or a loading spinner
+  }
+
   return (
     <>
-      <ThemeToggle />
       {isLoggedIn ? (
         <Profile userData={userData} onLogout={handleLogout} />
       ) : (

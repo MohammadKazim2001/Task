@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styles from "./Login.module.scss";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
-export const Login = ({ onLogin }) => {
+export const Login = ({ onLogin, onClose }) => {
+  // Add onClose prop
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState("");
@@ -53,52 +55,66 @@ export const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <h1 className={styles.title}>Registration / Login</h1>
+    <>
+      <div className={styles.toggleParent}>
+        <ThemeToggle />
+      </div>
+      <div className={styles.container}>
+        <div></div>
+        <div className={styles.card}>
+          <button
+            className={styles.closeButton}
+            onClick={onClose}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          <h1 className={styles.title}>Registration / Login</h1>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="email" className={styles.label}>
-              Your email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setError("");
-              }}
-              className={`${styles.input} ${error ? styles.inputError : ""}`}
-              placeholder="example@mail.com"
-            />
-          </div>
-
-          <div className={styles.checkboxGroup}>
-            <label className={styles.checkboxLabel}>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            {/* ... rest of your form remains the same ... */}
+            <div className={styles.inputGroup}>
+              <label htmlFor="email" className={styles.label}>
+                Your email
+              </label>
               <input
-                type="checkbox"
-                checked={agreed}
+                id="email"
+                type="email"
+                value={email}
                 onChange={(e) => {
-                  setAgreed(e.target.checked);
+                  setEmail(e.target.value);
                   setError("");
                 }}
-                className={styles.checkbox}
+                className={`${styles.input} ${error ? styles.inputError : ""}`}
+                placeholder="example@mail.com"
               />
-              <span className={styles.checkboxText}>
-                I agree to the privacy policy terms
-              </span>
-            </label>
-          </div>
+            </div>
 
-          {error && <div className={styles.error}>{error}</div>}
+            <div className={styles.checkboxGroup}>
+              <label className={styles.checkboxLabel}>
+                <input
+                  type="checkbox"
+                  checked={agreed}
+                  onChange={(e) => {
+                    setAgreed(e.target.checked);
+                    setError("");
+                  }}
+                  className={styles.checkbox}
+                />
+                <span className={styles.checkboxText}>
+                  I agree to the privacy policy terms
+                </span>
+              </label>
+            </div>
 
-          <button type="submit" className={styles.submitButton}>
-            Register
-          </button>
-        </form>
+            {error && <div className={styles.error}>{error}</div>}
+
+            <button type="submit" className={styles.submitButton}>
+              Register
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

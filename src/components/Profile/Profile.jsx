@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import styles from "./Profile.module.scss";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export const Profile = ({ userData, onLogout }) => {
   const [profile, setProfile] = useLocalStorage("userData", userData);
@@ -58,147 +59,173 @@ export const Profile = ({ userData, onLogout }) => {
   };
 
   const handleAvatarChange = () => {
-    // For demo purposes, just an alert
-    alert("Avatar change feature will be available in the next version");
+    alert("Avatar change function will be available in the next version");
+  };
+
+  const handleBackToRanking = () => {
+    // Add your navigation logic here
+    // Example: window.history.back() or navigate to ranking page
+    alert("Ranking page coming soon!");
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <button onClick={onLogout} className={styles.logoutButton}>
-          ← Logout
+    <div className={styles.wrapper}>
+      {/* Top Bar with Buttons */}
+      <div className={styles.topBar}>
+        <button onClick={handleBackToRanking} className={styles.backButton}>
+          ← Back to ranking
         </button>
+        <ThemeToggle />
+      </div>
 
-        <h1 className={styles.title}>Settings</h1>
+      {/* Main Layout */}
+      <div className={styles.layout}>
+        <aside className={styles.sidebar}>
+          <h2 className={styles.sidebarTitle}>Settings</h2>
+          <nav className={styles.nav}>
+            <button className={`${styles.navItem} ${styles.navItemActive}`}>
+              Profile
+            </button>
+            <button className={styles.navItem}>Project Niches</button>
+          </nav>
+        </aside>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          {/* Profile Section */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Profile</h2>
+        <main className={styles.main}>
+          <div className={styles.content}>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              {/* Rating Public Section */}
+              <section className={styles.card}>
+                <div className={styles.toggleRow}>
+                  <span className={styles.label}>
+                    Public participation in ranking
+                  </span>
+                  <label className={styles.toggle}>
+                    <input
+                      type="checkbox"
+                      name="ratingPublic"
+                      checked={formData.ratingPublic}
+                      onChange={handleChange}
+                      className={styles.toggleInput}
+                    />
+                    <span className={styles.toggleSlider}></span>
+                  </label>
+                </div>
+              </section>
 
-            <div className={styles.field}>
-              <label className={styles.checkboxLabel}>
+              {/* Alias Section */}
+              <section className={styles.card}>
+                <h3 className={styles.cardTitle}>Profile alias</h3>
                 <input
-                  type="checkbox"
-                  name="ratingPublic"
-                  checked={formData.ratingPublic}
+                  type="text"
+                  name="alias"
+                  value={formData.alias}
                   onChange={handleChange}
-                  className={styles.checkbox}
+                  className={styles.input}
+                  placeholder="Enter name"
                 />
-                <span>Participate in public rating</span>
-              </label>
-            </div>
+              </section>
 
-            <div className={styles.field}>
-              <label className={styles.label}>Profile alias</label>
-              <input
-                type="text"
-                name="alias"
-                value={formData.alias}
-                onChange={handleChange}
-                className={styles.input}
-                placeholder="Enter a name"
-              />
-            </div>
-          </section>
+              {/* Avatar Section */}
+              <section className={styles.card}>
+                <h3 className={styles.cardTitle}>Avatar</h3>
+                <div className={styles.avatarContainer}>
+                  <div className={styles.avatarWrapper}>
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+                      alt="Avatar"
+                      className={styles.avatar}
+                    />
+                  </div>
+                  <div className={styles.avatarInfo}>
+                    <p className={styles.avatarDate}>Uploaded 24.02.25</p>
+                    <p className={styles.avatarName}>
+                      name.jpg{" "}
+                      <button type="button" className={styles.deleteLink}>
+                        Delete
+                      </button>
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleAvatarChange}
+                      className={styles.changeButton}
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+              </section>
 
-          {/* Avatar Section */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Avatar</h2>
-            <div className={styles.avatarInfo}>
-              <div className={styles.avatarDetails}>
-                <p>Uploaded {profile?.profile?.avatar?.date || "24.02.25"}</p>
-                <p>Name: {profile?.profile?.avatar?.name || "Jeev Yadav"}</p>
+              {/* Contacts Section */}
+              <section className={styles.card}>
+                <h3 className={styles.cardTitle}>Contacts</h3>
+
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel}>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="Your email"
+                  />
+                </div>
+
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel}>VKontakte</label>
+                  <input
+                    type="url"
+                    name="vk"
+                    value={formData.vk}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="https://vk.com/"
+                  />
+                </div>
+
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel}>Telegram</label>
+                  <input
+                    type="url"
+                    name="telegram"
+                    value={formData.telegram}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="https://t.me/"
+                  />
+                </div>
+
+                <div className={styles.field}>
+                  <label className={styles.fieldLabel}>WhatsApp</label>
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    className={styles.input}
+                    placeholder="+1 123 456 78 90"
+                  />
+                </div>
+              </section>
+
+              <div className={styles.actions}>
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className={`${styles.button} ${styles.buttonSecondary}`}
+                >
+                  Clear all
+                </button>
+                <button
+                  type="submit"
+                  className={`${styles.button} ${styles.buttonPrimary}`}
+                >
+                  Apply changes
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={handleAvatarChange}
-                className={styles.changeButton}
-              >
-                Change
-              </button>
-            </div>
-          </section>
-
-          {/* Contacts Section */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Contacts</h2>
-
-            <div className={styles.field}>
-              <label className={styles.label}>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={styles.input}
-                placeholder="Your email"
-              />
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label}>VKontakte</label>
-              <input
-                type="url"
-                name="vk"
-                value={formData.vk}
-                onChange={handleChange}
-                className={styles.input}
-                placeholder="https://vk.com/"
-              />
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label}>Telegram</label>
-              <input
-                type="url"
-                name="telegram"
-                value={formData.telegram}
-                onChange={handleChange}
-                className={styles.input}
-                placeholder="https://t.me/"
-              />
-            </div>
-
-            <div className={styles.field}>
-              <label className={styles.label}>WhatsApp</label>
-              <input
-                type="tel"
-                name="whatsapp"
-                value={formData.whatsapp}
-                onChange={handleChange}
-                className={styles.input}
-                placeholder="+1 123 456 78 90"
-              />
-            </div>
-          </section>
-
-          <div className={styles.actions}>
-            <button
-              type="button"
-              onClick={handleClear}
-              className={`${styles.button} ${styles.buttonSecondary}`}
-            >
-              Clear all
-            </button>
-            <button
-              type="submit"
-              className={`${styles.button} ${styles.buttonPrimary}`}
-            >
-              Apply changes
-            </button>
+            </form>
           </div>
-        </form>
-
-        <div className={styles.footer}>
-          <p className={styles.footerText}>
-            Sign up to comment, edit, inspect and more.
-          </p>
-          <div className={styles.footerButtons}>
-            <button className={styles.footerBtn}>Sign up</button>
-            <button className={styles.footerBtn}>Continue</button>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   );
