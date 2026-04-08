@@ -3,7 +3,7 @@
 
 .wrapper {
   padding: 10px 250px;
-  min-height: 100vh;
+    min-height: 100vh;
   background-color: var(--bg-color);
   
   @include dotted-bg-overlay(
@@ -12,22 +12,16 @@
     20px
   );
 
-  :global(body.dark) & {
-    @include dotted-bg-overlay(
-      rgba(149, 192, 148, 0.63),
-      1px,
-      20px
-    );
+  @media (max-width: 1200px) { 
+    padding: 10px 100px;
   }
 
-  // Tablet
   @media (max-width: $tablet) {
-    padding: 10px 40px;
+    padding: 10px 20px;
   }
 
-  // Mobile
   @media (max-width: $mobile) {
-    padding: 5px 16px;
+    padding: 10px 5px;
   }
 }
 
@@ -95,9 +89,8 @@
   display: flex;
   gap: $spacing-lg;
 
-  @media (max-width: $tablet) {
+  @media (max-width: 1024px) { 
     flex-direction: column;
-    gap: $spacing-md;
   }
 }
 
@@ -368,11 +361,9 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   align-items: flex-end;
   gap: $spacing-lg;
 
-  @media (max-width: $tablet) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: $spacing-md;
   }
 }
 
