@@ -72,7 +72,6 @@ export const Login = ({ onLogin, onClose }) => {
           <h1 className={styles.title}>Registration / Login</h1>
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            {/* ... rest of your form remains the same ... */}
             <div className={styles.inputGroup}>
               <label htmlFor="email" className={styles.label}>
                 Your email

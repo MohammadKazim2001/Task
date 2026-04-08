@@ -9,18 +9,34 @@
   z-index: 1000;
 }
 
+// .container {
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: $spacing-md;
+// }
+
 .container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: $spacing-md;
+
+  /* Light mode (default) */
+  background: $login-bg; // your red (adjust as needed)
+
+  /* Dark mode override */
+  :global(body.dark) & {
+    background: var(--bg-color); // fallback to your dark theme
+  }
 }
 
 .card {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
-  background: var(--surface-color, $light-surface);
+  background: $white-bg;
   border-radius: 24px;
   padding: $spacing-xl;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
