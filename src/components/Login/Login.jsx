@@ -101,7 +101,10 @@ export const Login = ({ onLogin, onClose }) => {
                   className={styles.checkbox}
                 />
                 <span className={styles.checkboxText}>
-                  I agree to the privacy policy terms
+                  I agree to the{" "}
+                  <span className={styles.term_privacy}>
+                    privacy policy terms
+                  </span>
                 </span>
               </label>
             </div>
@@ -109,7 +112,7 @@ export const Login = ({ onLogin, onClose }) => {
             {error && <div className={styles.error}>{error}</div>}
 
             <button type="submit" className={styles.submitButton}>
-              Register
+              To Register
             </button>
           </form>
         </div>

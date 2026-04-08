@@ -9,15 +9,27 @@
   z-index: 1000;
 }
 
+// .container {
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: $spacing-md;
+// }
+
 .container {
   min-height: 100vh;
   display: flex;
-  background: $login-bg;
   align-items: center;
   justify-content: center;
   padding: $spacing-md;
+
+  /* Light mode (default) */
+  background: $login-bg; // your red (adjust as needed)
+
+  /* Dark mode override */
   :global(body.dark) & {
-    background: var(--bg-color);
+    background: var(--bg-color); // fallback to your dark theme
   }
 }
 
@@ -26,15 +38,16 @@
   width: 100%;
   background: $white-bg;
   border-radius: 24px;
-  padding: $spacing-lg;
+  padding: $spacing-md;
+  border: 1px solid $light-border;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   position: relative;
 
-  :global(body.dark) & {
+  body.dark & {
     background: $dark-surface;
     box-shadow: 0 4px 20px rgba(8, 16, 62, 0.3);
-    border: 1px solid #29345e;
+    border: 1px solid rgba(77, 158, 255, 0.4);
   }
 }
 
@@ -45,8 +58,7 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: #000;
-  color: #fff;
+  background: #5DD095;
   border: none;
   font-size: 24px;
   font-weight: 300;
@@ -55,14 +67,14 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  color: $light-text;
   font-size: 30px;
   font-weight: bold;
   padding-bottom: 5px;
   
-  :global(body.dark) & {
-    background: #5DD095;
-  color: #000;
-
+  body.dark & {
+    background: rgba(255, 255, 255, 0.1);
+    color: $dark-text;
     
     &:hover {
       background: rgba(255, 255, 255, 0.2);
@@ -70,8 +82,6 @@
     }
   }
 }
-
-
 
 .title {
   font-size: 28px;
@@ -159,67 +169,19 @@
 }
 
 .checkbox {
+  margin-top: 0;
   width: 18px;
   height: 18px;
   cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  margin: 0;
-  padding: 5px;
-  background: var(--input-bg);
-  border: 2px solid #000;
-  border-radius: 5px; 
-  position: relative;
-  
-  // Checked state
-  &:checked {
-    background: #000;
-    border-color: #000;
-    
-    &::after {
-      content: '✓';
-      position: absolute;
-      color: white;
-      font-size: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  :global(body.dark) & {
-    background: var(--input-bg);
-    border-color: #fff;
-    
-    &:checked {
-      background: #fff;
-      border-color: #fff;
-      &::after {
-      content: '✓';
-      position: absolute;
-      color: #000;
-      font-size: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    }
-  }
-  
 }
 
 .checkboxText {
   font-size: 14px;
   line-height: 1.4;
-  text-transform: uppercase;
   
   body.dark & {
     color: $dark-text;
   }
-}
-
-.term_privacy{
-  color:#4bdc91;
 }
 
 .error {
@@ -241,13 +203,27 @@
   transition: all 0.3s ease;
   
   &:hover {
-    background: #48d18a;
+    background: $light-primary-hover;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba($light-primary, 0.3);
   }
   
-  :global(body.dark) & {
-    color: #000;    
+  &:active {
+    transform: translateY(0);
+  }
+  
+  // &:focus {
+  //   outline: 2px solid $light-primary;
+  //   outline-offset: 2px;
+  // }
+  
+  body.dark & {
+    background: $dark-primary;
+    color: $dark-text;
+    
+    &:hover {
+      background: $dark-primary-hover;
+    }
   }
 }
 
