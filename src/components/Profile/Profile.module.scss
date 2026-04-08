@@ -1,9 +1,26 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
 
 .wrapper {
   padding: 10px 200px;
   min-height: 100vh;
-  background: var(--bg-color);
+
+  background-color: var(--bg-color); // ✅ فقط رنگ
+
+  @include dotted-bg-overlay(
+    rgba(0,0,0,0.05), // برای light
+    1px,
+    20px
+  );
+
+  body.dark & {
+    @include dotted-bg-overlay(
+      rgba(255,255,255,0.06), // برای dark
+      1px,
+      20px
+    );
+  }
 }
 
 .topBar {
@@ -258,7 +275,10 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   gap: $spacing-sm;
 }
 
-.avatarDate,
+.avatarDate{
+  font-size: 12px;
+  color: var(--text-color);
+}
 .avatarName {
   font-size: 14px;
   color: var(--text-color);

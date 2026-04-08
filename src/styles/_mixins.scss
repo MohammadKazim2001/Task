@@ -1,0 +1,12 @@
+@mixin dotted-bg-overlay(
+  $dot-color: rgba(255,255,255,0.08),
+  $dot-size: 1px,
+  $spacing: 18px
+) {
+  background-image: radial-gradient(
+    circle,
+    $dot-color $dot-size,
+    transparent $dot-size
+  );
+  background-size: $spacing $spacing;
+}
