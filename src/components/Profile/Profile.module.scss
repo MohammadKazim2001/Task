@@ -186,7 +186,6 @@
 
 .cardTitle {
   font-size: 16px;
-  // margin-top: $spacing-md;
   margin-bottom: $spacing-md;
   color: var(--text-color);
 }
@@ -337,7 +336,7 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 
 .changeButton {
   background: $light-submit-button;
-  color: white;
+  color: #000;
   border: none;
   padding: 10px 24px;
   border-radius: 8px;
@@ -350,6 +349,9 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   &:hover {
     opacity: 0.9;
     transform: translateY(-1px);
+  }
+  body.dark & {
+    color: #fff; 
   }
 }
 
@@ -400,7 +402,7 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 .button {
   padding: 12px 24px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -409,11 +411,15 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 
 .buttonPrimary {
   background: $light-submit-button;
-  color: white;
+  color: #000;
   
   &:hover {
     opacity: 0.9;
     transform: translateY(-1px);
+  }
+
+  :global(body.dark) & {
+    color: #fff; 
   }
 }
 
