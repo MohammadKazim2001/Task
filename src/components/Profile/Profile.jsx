@@ -49,14 +49,12 @@ export const Profile = ({ userData, onLogout }) => {
   };
 
   const handleClear = () => {
-    setFormData({
-      alias: "",
-      ratingPublic: true,
-      email: profile?.email || "",
-      vk: "",
-      telegram: "",
-      whatsapp: "",
-    });
+    if (
+      window.confirm("Are you sure you want to log out and clear your data?")
+    ) {
+      localStorage.removeItem("userData");
+      if (onLogout) onLogout();
+    }
   };
 
   const handleAvatarChange = () => {
