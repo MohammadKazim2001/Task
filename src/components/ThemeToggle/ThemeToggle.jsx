@@ -39,7 +39,6 @@ export const ThemeToggle = () => {
     >
       <span className={styles.toggleText}>Change theme</span>
       <span className={styles.toggleIcon}>
-        {/* <ThemeIcon width={140} height={19} /> */}
         <ThemeIcon width={16} height={16} />
       </span>
     </button>

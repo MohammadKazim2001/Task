@@ -1,4 +1,3 @@
-// src/components/ThemeIcon/ThemeIcon.jsx
 const ThemeIcon = ({ className, width = 16, height = 16 }) => {
   return (
     <svg

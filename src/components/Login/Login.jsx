@@ -3,7 +3,6 @@ import styles from "./Login.module.scss";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export const Login = ({ onLogin, onClose }) => {
-  // Add onClose prop
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState("");
@@ -31,7 +30,6 @@ export const Login = ({ onLogin, onClose }) => {
       return;
     }
 
-    // Save to localStorage
     const userData = {
       email,
       profile: {
