@@ -3,10 +3,39 @@
   $dot-size: 1px,
   $spacing: 18px
 ) {
-  background-image: radial-gradient(
-    circle,
-    $dot-color $dot-size,
-    transparent $dot-size
-  );
-  background-size: $spacing $spacing;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: radial-gradient(
+      circle,
+      $dot-color $dot-size,
+      transparent $dot-size
+    );
+
+    background-size: $spacing $spacing;
+
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.5) 15%,
+      rgba(0,0,0,0.2) 25%,
+      rgba(0,0,0,0) 40%
+    );
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.5) 15%,
+      rgba(0,0,0,0.2) 25%,
+      rgba(0,0,0,0) 30%
+    );
+
+    pointer-events: none;
+  }
 }

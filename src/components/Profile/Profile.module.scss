@@ -14,9 +14,16 @@
     20px
   );
 
-  body.dark & {
+  // body.dark & {
+  //   @include dotted-bg-overlay(
+  //     rgba(227, 35, 35, 0.772), 
+  //     1px,
+  //     20px
+  //   );
+  // }
+  :global(body.dark) & {
     @include dotted-bg-overlay(
-      rgba(227, 35, 35, 0.772), 
+      rgba(149, 192, 148, 0.63),
       1px,
       20px
     );

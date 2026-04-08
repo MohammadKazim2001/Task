@@ -35,9 +35,8 @@ function App() {
     setUserData(null);
   };
 
-  // Show nothing while checking localStorage
   if (isLoading) {
-    return null; // Or a loading spinner
+    return null;
   }
 
   return (
