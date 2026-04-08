@@ -35,56 +35,32 @@
   gap: $spacing-lg;
 }
 
-// .sidebar {
-//   width: 280px;
-//   padding: $spacing-xl;
-// }
-
 .sidebar {
   width: 280px;
   padding: $spacing-xl;
-  
-  body.dark & {
-    background: $dark-surface;
-    position: relative;
-    border-radius: 24px;
-    margin: $spacing-md;
-    width: calc(280px - #{$spacing-md} * 2);
-    
-    // More visible glow effect
-    box-shadow: 
-      0 0 30px rgba($dark-primary, 0.4),
-      0 0 60px rgba($dark-primary, 0.2);
-    
-    // Colored background spread
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -10px;
-      background: radial-gradient(
-        ellipse at 30% 30%,
-        rgba($dark-primary, 0.35),
-        rgba($dark-primary, 0.1) 40%,
-        transparent 70%
-      );
-      filter: blur(20px);
-      z-index: -1;
-      border-radius: 34px;
-    }
-    
-    // Inner color wash
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 20% 40%,
-        rgba($dark-primary, 0.2),
-        transparent 80%
-      );
-      border-radius: 24px;
-      pointer-events: none;
-    }
+}
+
+.sidebarContent {
+  position: relative;
+  z-index: 1;
+  padding: $spacing-lg;
+  border-radius: 12px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -30px; // پخش شدن به اطراف
+
+    background: radial-gradient(
+      circle,
+      rgba(var(--primary-rgb), 0.25) 0%,
+      rgba(var(--primary-rgb), 0.1) 40%,
+      transparent 80%
+    );
+
+    filter: blur(35px);
+    z-index: -1;
+    pointer-events: none;
   }
 }
 
@@ -204,6 +180,7 @@
   }
 }
 
+
 .toggleSlider {
   position: absolute;
   cursor: pointer;
@@ -216,7 +193,7 @@
   border-radius: 24px;
   
   body.dark & {
-    background-color: #555;
+    background-color: #2a1a1a; /* Dark red-tinted background for dark mode */
   }
   
   &:before {
@@ -230,6 +207,28 @@
     transition: 0.4s;
     border-radius: 50%;
   }
+  
+  // Fix: Move body.dark before the pseudo-element
+  body.dark &:before {
+    background-color: #ff6666; /* Light red knob in dark mode */
+  }
+}
+
+.toggleInput:checked + .toggleSlider {
+  background-color: #5DD095;
+  
+  body.dark & {
+    background-color: #ff4444; /* Red background when checked in dark mode */
+  }
+}
+
+.toggleInput:checked + .toggleSlider:before {
+  background-color: white;
+}
+
+// Fix: Separate rule for dark mode checked knob
+body.dark .toggleInput:checked + .toggleSlider:before {
+  background-color: #ffffff;
 }
 
 .avatarContainer {

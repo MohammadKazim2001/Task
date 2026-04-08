@@ -79,13 +79,16 @@ export const Profile = ({ userData, onLogout }) => {
       {/* Main Layout */}
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
-          <h2 className={styles.sidebarTitle}>Settings</h2>
-          <nav className={styles.nav}>
-            <button className={`${styles.navItem} ${styles.navItemActive}`}>
-              Profile
-            </button>
-            <button className={styles.navItem}>Project Niches</button>
-          </nav>
+          <div className={styles.sidebarContent}>
+            <h2 className={styles.sidebarTitle}>Settings</h2>
+
+            <nav className={styles.nav}>
+              <button className={`${styles.navItem} ${styles.navItemActive}`}>
+                Profile
+              </button>
+              <button className={styles.navItem}>Project Niches</button>
+            </nav>
+          </div>
         </aside>
 
         <main className={styles.main}>
