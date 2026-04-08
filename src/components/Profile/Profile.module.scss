@@ -37,7 +37,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
   padding: 0 $spacing-md;
   flex-wrap: wrap;
   gap: $spacing-md;
@@ -73,8 +73,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
-  padding: 20px;
+  margin-bottom: 30px;
   
   svg {
     display: block;
