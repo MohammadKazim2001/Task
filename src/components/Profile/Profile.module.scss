@@ -3,8 +3,10 @@
 
 .wrapper {
   padding: 10px 170px;
-    min-height: 100vh;
+  min-height: 100vh;
   background-color: var(--bg-color);
+  overflow-x: hidden; 
+  width: 100%; 
   
   @include dotted-bg-overlay(
     rgba(37, 30, 30, 0.2),
