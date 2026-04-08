@@ -6,7 +6,7 @@
   padding: 10px 200px;
   min-height: 100vh;
 
-  background-color: var(--bg-color); // ✅ فقط رنگ
+  background-color: var(--bg-color);  
 
   @include dotted-bg-overlay(
     rgba(0,0,0,0.05), // برای light
@@ -47,6 +47,20 @@
   }
 }
 
+.profileIconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 20px;
+  
+  svg {
+    display: block;
+    width: 78px;
+    height: 79px;
+  }
+}
+
 .layout {
   display: flex;
   gap: $spacing-lg;
@@ -66,16 +80,16 @@
   &::before {
     content: "";
     position: absolute;
-    inset: -30px; // پخش شدن به اطراف
+    inset: -60px; // bigger spread around
 
     background: radial-gradient(
       circle,
-      rgba(var(--primary-rgb), 0.25) 0%,
-      rgba(var(--primary-rgb), 0.1) 40%,
-      transparent 80%
+      rgba(var(--glow-rgb), 0.25) 0%,
+      rgba(var(--glow-rgb), 0.1) 50%, // increase the gradient distance
+      transparent 90%
     );
 
-    filter: blur(35px);
+    filter: blur(50px); // stronger blur for more glow
     z-index: -1;
     pointer-events: none;
   }
@@ -96,6 +110,21 @@
 
 .navItem {
   padding: 12px 20px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+  
+  &:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+  }
+}
+.navItem_project {
+  padding: 12px;
   border: none;
   background: transparent;
   border-radius: 8px;

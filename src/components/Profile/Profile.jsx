@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import styles from "./Profile.module.scss";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import ProfileIcon from "../ProfileIcon";
 
 export const Profile = ({ userData, onLogout }) => {
   const [profile, setProfile] = useLocalStorage("userData", userData);
@@ -76,6 +77,10 @@ export const Profile = ({ userData, onLogout }) => {
         <ThemeToggle />
       </div>
 
+      <div className={styles.profileIconWrapper}>
+        <ProfileIcon />
+      </div>
+
       {/* Main Layout */}
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
@@ -86,7 +91,7 @@ export const Profile = ({ userData, onLogout }) => {
               <button className={`${styles.navItem} ${styles.navItemActive}`}>
                 Profile
               </button>
-              <button className={styles.navItem}>Project Niches</button>
+              <button className={styles.navItem_project}>Project Niches</button>
             </nav>
           </div>
         </aside>

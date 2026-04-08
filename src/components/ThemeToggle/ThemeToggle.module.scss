@@ -26,10 +26,10 @@
     }
   }
   
-  &:focus {
-    outline: 2px solid $light-primary;
-    outline-offset: 2px;
-  }
+  // &:focus {
+  //   outline: 2px solid $light-primary;
+  //   outline-offset: 2px;
+  // }
 }
 
 .toggleIcon {
@@ -37,10 +37,6 @@
 }
 
 .toggleText {
-  color: $light-text;
+  color: var(--text-color);
   font-weight: 500;
-  
-  body.dark & {
-    color: $dark-text;
-  }
 }
