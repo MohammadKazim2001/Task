@@ -1,4 +1,3 @@
-// components/ProfileIcon/ProfileIcon.jsx
 const ProfileIcon = ({ className, width = 78, height = 79 }) => {
   return (
     <svg
