@@ -12,6 +12,14 @@
     20px
   );
 
+  :global(body.dark) & {
+    @include dotted-bg-overlay(
+      rgba(149, 192, 148, 0.63),
+      1px,
+      20px
+    );
+  }
+
   @media (max-width: 1200px) { 
     padding: 10px 100px;
   }
