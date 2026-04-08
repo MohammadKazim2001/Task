@@ -78,30 +78,30 @@
   padding: $spacing-xl;
 }
 
+
 .sidebarContent {
   position: relative;
   z-index: 1;
   padding: $spacing-lg;
   border-radius: 12px;
 
-  &::before {
+  :global(body.dark) &::before {
     content: "";
     position: absolute;
-    inset: -60px; 
+    inset: -60px;
 
     background: radial-gradient(
       circle,
       rgba(var(--glow-rgb), 0.25) 0%,
-      rgba(var(--glow-rgb), 0.1) 50%, // increase the gradient distance
+      rgba(var(--glow-rgb), 0.1) 70%,
       transparent 90%
     );
 
-    filter: blur(50px); 
+    filter: blur(50px);
     z-index: -1;
     pointer-events: none;
   }
 }
-
 
 .sidebarTitle {
   font-size: 24px;
