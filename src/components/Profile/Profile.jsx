@@ -151,11 +151,8 @@ export const Profile = ({ userData, onLogout }) => {
                     </button>
                   </div>
                 </div>
-              </section>
 
-              {/* Contacts Section */}
-              <section className={styles.card}>
-                <h3 className={styles.cardTitle}>Contacts</h3>
+                <h3 className={styles.cardTitleContact}>Contacts</h3>
 
                 <div className={styles.field}>
                   <label className={styles.fieldLabel}>Email</label>
