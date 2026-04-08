@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./Login.module.scss";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
-export const Login = ({ onLogin, onClose }) => {
+export const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState("");
@@ -58,15 +58,8 @@ export const Login = ({ onLogin, onClose }) => {
         <ThemeToggle />
       </div>
       <div className={styles.container}>
-        <div></div>
         <div className={styles.card}>
-          <button
-            className={styles.closeButton}
-            onClick={onClose}
-            aria-label="Close"
-          >
-            ×
-          </button>
+          <button className={styles.closeButton}>×</button>
           <h1 className={styles.title}>Registration / Login</h1>
 
           <form onSubmit={handleSubmit} className={styles.form}>

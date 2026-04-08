@@ -67,7 +67,6 @@ export const Profile = ({ userData, onLogout }) => {
 
   return (
     <div className={styles.wrapper}>
-      {/* Top Bar with Buttons */}
       <div className={styles.topBar}>
         <button onClick={handleBackToRanking} className={styles.backButton}>
           ← Back to ranking

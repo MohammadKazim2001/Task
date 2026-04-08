@@ -1,26 +1,17 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-
 .wrapper {
   padding: 10px 200px;
   min-height: 100vh;
-
-  background-color: var(--bg-color);  
-
+  background-color: var(--bg-color);
+  
   @include dotted-bg-overlay(
     rgba(37, 30, 30, 0.2),
     1px,
     20px
   );
 
-  // body.dark & {
-  //   @include dotted-bg-overlay(
-  //     rgba(227, 35, 35, 0.772), 
-  //     1px,
-  //     20px
-  //   );
-  // }
   :global(body.dark) & {
     @include dotted-bg-overlay(
       rgba(149, 192, 148, 0.63),
@@ -28,14 +19,31 @@
       20px
     );
   }
+
+  // Tablet
+  @media (max-width: $tablet) {
+    padding: 10px 40px;
+  }
+
+  // Mobile
+  @media (max-width: $mobile) {
+    padding: 10px 16px;
+  }
 }
 
 .topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-xl;
+  margin-bottom: $spacing-sm;
   padding: 0 $spacing-md;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  @media (max-width: $mobile) {
+    margin-bottom: $spacing-lg;
+    padding: 0;
+  }
 }
 
 .backButton {
@@ -52,6 +60,11 @@
     color: var(--primary-color);
     background: rgba(var(--primary-rgb), 0.1);
   }
+
+  @media (max-width: $mobile) {
+    font-size: 12px;
+    padding: $spacing-xs $spacing-sm;
+  }
 }
 
 .profileIconWrapper {
@@ -66,18 +79,42 @@
     width: 78px;
     height: 79px;
   }
+
+  @media (max-width: $mobile) {
+    padding: 10px;
+    margin: 0;
+    
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
 }
 
 .layout {
   display: flex;
   gap: $spacing-lg;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
 }
 
 .sidebar {
   width: 280px;
   padding: $spacing-xl;
-}
+  flex-shrink: 0;
 
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding: $spacing-md;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $spacing-sm;
+  }
+}
 
 .sidebarContent {
   position: relative;
@@ -89,17 +126,19 @@
     content: "";
     position: absolute;
     inset: -60px;
-
     background: radial-gradient(
       circle,
       rgba(var(--glow-rgb), 0.25) 0%,
       rgba(var(--glow-rgb), 0.1) 70%,
       transparent 90%
     );
-
     filter: blur(50px);
     z-index: -1;
     pointer-events: none;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $spacing-md;
   }
 }
 
@@ -107,21 +146,37 @@
   font-size: 24px;
   margin-bottom: $spacing-xl;
   color: var(--text-color);
+
+  @media (max-width: $tablet) {
+    font-size: 20px;
+    margin-bottom: $spacing-lg;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 18px;
+    margin-bottom: $spacing-md;
+  }
 }
 
 .nav {
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
+
+  @media (max-width: $mobile) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
 }
 
-.navItem {
-  padding: 12px 20px;
+.navItem, .navItem_project {
+  padding: 18px 20px;
   border: none;
   background: transparent;
   border-radius: 8px;
   text-align: left;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   color: var(--text-color);
@@ -129,52 +184,61 @@
   &:hover {
     background: rgba(var(--primary-rgb), 0.1);
   }
-}
-.navItem_project {
-  padding: 12px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
-  text-align: left;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: var(--text-color);
-  
-  &:hover {
-    background: rgba(var(--primary-rgb), 0.1);
+
+  @media (max-width: $mobile) {
+    padding: 8px 16px;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
   }
 }
 
 .navItemActive {
   background: $light-submit-button;
-  color: white;
+  color: #fff;
   
   &:hover {
     background: $light-submit-button;
     opacity: 0.9;
   }
   
-  body.dark & {
-    background: $light-submit-button; 
+  :global(body.dark) & {
+    background: $light-submit-button;
+    color: #000;
   }
 }
 
 .main {
   flex: 1;
   padding: $spacing-xl;
-  max-width: calc(100% - 280px);
+  min-width: 0; 
+
+  @media (max-width: $tablet) {
+    padding: $spacing-md;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $spacing-sm;
+  }
 }
 
 .content {
   max-width: 800px;
   margin: 0 auto;
+
+  @media (max-width: $tablet) {
+    max-width: 100%;
+  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: $spacing-lg;
+
+  @media (max-width: $mobile) {
+    gap: $spacing-md;
+  }
 }
 
 .card {
@@ -182,29 +246,47 @@
   border-radius: 12px;
   padding: $spacing-lg;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: $mobile) {
+    padding: $spacing-md;
+    border-radius: 8px;
+  }
 }
 
-.cardTitle {
+.cardTitle, .cardTitleContact {
   font-size: 16px;
   margin-bottom: $spacing-md;
   color: var(--text-color);
+
+  @media (max-width: $mobile) {
+    font-size: 15px;
+    margin-bottom: $spacing-sm;
+  }
 }
+
 .cardTitleContact {
-  font-size: 16px;
   margin-top: $spacing-lg;
-  margin-bottom: $spacing-md;
-  color: var(--text-color);
+
+  @media (max-width: $mobile) {
+    margin-top: $spacing-md;
+  }
 }
 
 .toggleRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
 }
 
 .label {
   font-size: 16px;
   color: var(--text-color);
+
+  @media (max-width: $mobile) {
+    font-size: 14px;
+  }
 }
 
 .toggle {
@@ -212,6 +294,7 @@
   display: inline-block;
   width: 44px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .toggleInput {
@@ -231,7 +314,6 @@
     transform: translateX(20px);
   }
 }
-
 
 .toggleSlider {
   position: absolute;
@@ -283,8 +365,15 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 
 .avatarContainer {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: $spacing-lg;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $spacing-md;
+  }
 }
 
 .avatarWrapper {
@@ -293,6 +382,11 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
+
+  @media (max-width: $mobile) {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 .avatar {
@@ -302,28 +396,40 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 }
 
 .avatarInfo {
-  height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end !important; 
+  justify-content: flex-end;
   gap: $spacing-sm;
+
+  @media (max-width: $tablet) {
+    align-items: center;
+  }
 }
 
-.avatarDate{
+.avatarDate {
   font-size: 12px;
-  color: var(--text-color);
+  color: #a4a3a3;
 }
+
 .avatarName {
   font-size: 14px;
   color: var(--text-color);
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+
+  @media (max-width: $mobile) {
+    justify-content: center;
+  }
 }
 
 .deleteLink {
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: #000;
   cursor: pointer;
   font-size: 14px;
   text-decoration: underline;
@@ -332,11 +438,15 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   &:hover {
     opacity: 0.8;
   }
+
+  :global(body.dark) & {
+    color: #fff; 
+  }
 }
 
 .changeButton {
   background: $light-submit-button;
-  color: #000;
+  color: #fff;
   border: none;
   padding: 10px 24px;
   border-radius: 8px;
@@ -350,8 +460,13 @@ body.dark .toggleInput:checked + .toggleSlider:before {
     opacity: 0.9;
     transform: translateY(-1px);
   }
-  body.dark & {
-    color: #fff; 
+  
+  :global(body.dark) & {
+    color: #000; 
+  }
+
+  @media (max-width: $tablet) {
+    width: 100%;
   }
 }
 
@@ -368,6 +483,10 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   font-size: 14px;
   margin-bottom: $spacing-xs;
   color: var(--text-color);
+
+  @media (max-width: $mobile) {
+    font-size: 13px;
+  }
 }
 
 .input {
@@ -390,6 +509,11 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   &::placeholder {
     color: var(--placeholder-color, #999);
   }
+
+  @media (max-width: $mobile) {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
 }
 
 .actions {
@@ -397,6 +521,11 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   gap: $spacing-md;
   justify-content: flex-start;
   margin-top: $spacing-md;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
 }
 
 .button {
@@ -407,11 +536,16 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    padding: 10px 20px;
+  }
 }
 
 .buttonPrimary {
   background: $light-submit-button;
-  color: #000;
+  color: #fff;
   
   &:hover {
     opacity: 0.9;
@@ -419,7 +553,7 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   }
 
   :global(body.dark) & {
-    color: #fff; 
+    color: #000; 
   }
 }
 
@@ -434,62 +568,34 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   }
 }
 
-// Responsive
-@media (max-width: $tablet) {
-  .layout {
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    width: 100%;
-    padding: $spacing-lg;
-  }
-  
-  .main {
-    max-width: 100%;
-    padding: $spacing-lg;
-  }
-  
-  .avatarContainer {
-    flex-direction: column;
-  }
-  
-  .avatarWrapper {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .actions {
-    flex-direction: column;
-    
-    .button {
-      width: 100%;
-    }
-  }
-}
-
-@media (max-width: $mobile) {
-  .wrapper {
-    padding: $spacing-md;
-  }
-  
-  .topBar {
-    padding: 0;
-  }
-  
-  .sidebar {
-    padding: $spacing-md;
-  }
-  
+// Additional responsive improvements for very small devices
+@media (max-width: 480px) {
   .sidebarTitle {
-    font-size: 20px;
+    font-size: 16px;
   }
-  
-  .main {
-    padding: $spacing-md;
+
+  .cardTitle, .cardTitleContact {
+    font-size: 14px;
   }
-  
-  .card {
-    padding: $spacing-md;
+
+  .label {
+    font-size: 13px;
+  }
+
+  .avatarWrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatarInfo {
+    gap: $spacing-xs;
+  }
+
+  .avatarName {
+    font-size: 12px;
+  }
+
+  .deleteLink, .changeButton {
+    font-size: 12px;
   }
 }
