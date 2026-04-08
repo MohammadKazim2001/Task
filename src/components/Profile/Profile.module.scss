@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .wrapper {
-  padding: 10px 200px;
+  padding: 10px 250px;
   min-height: 100vh;
   background-color: var(--bg-color);
   
@@ -27,7 +27,7 @@
 
   // Mobile
   @media (max-width: $mobile) {
-    padding: 10px 16px;
+    padding: 5px 16px;
   }
 }
 
@@ -171,7 +171,7 @@
 }
 
 .navItem, .navItem_project {
-  padding: 18px 20px;
+  padding: 16px 20px;
   border: none;
   background: transparent;
   border-radius: 8px;
@@ -377,8 +377,8 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 }
 
 .avatarWrapper {
-  width: 150px;
-  height: 150px;
+  width: 190px;
+  height: 200px;
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
@@ -448,7 +448,7 @@ body.dark .toggleInput:checked + .toggleSlider:before {
   background: $light-submit-button;
   color: #fff;
   border: none;
-  padding: 10px 24px;
+  padding: 16px 26px;
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
@@ -529,7 +529,7 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 }
 
 .button {
-  padding: 12px 24px;
+  padding: 16px 26px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 500;

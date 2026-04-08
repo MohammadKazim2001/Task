@@ -3,6 +3,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import styles from "./Profile.module.scss";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import ProfileIcon from "../ProfileIcon";
+import avatar from "../../assets/avatar.JPG";
 
 export const Profile = ({ userData, onLogout }) => {
   const [profile, setProfile] = useLocalStorage("userData", userData);
@@ -134,7 +135,8 @@ export const Profile = ({ userData, onLogout }) => {
                 <div className={styles.avatarContainer}>
                   <div className={styles.avatarWrapper}>
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+                      // src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+                      src={avatar}
                       alt="Avatar"
                       className={styles.avatar}
                     />

@@ -9,7 +9,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check for user in localStorage
     const savedUser = localStorage.getItem("userData");
     if (savedUser) {
       try {
