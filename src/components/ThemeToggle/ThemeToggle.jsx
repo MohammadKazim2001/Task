@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./ThemeToggle.module.scss";
+import ThemeIcon from "../ThemeIcon";
 
 export const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem("theme");
-    // Check if dark class exists on body
     return saved === "dark" || document.body.classList.contains("dark");
   });
 
@@ -20,7 +20,6 @@ export const ThemeToggle = () => {
     }
   }, [isDark]);
 
-  // Also add an effect to sync with localStorage changes from other tabs
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key === "theme") {
@@ -39,7 +38,10 @@ export const ThemeToggle = () => {
       aria-label="Toggle theme"
     >
       <span className={styles.toggleText}>Change theme</span>
-      <span className={styles.toggleIcon}>{isDark ? "☀️" : "🌙"}</span>
+      <span className={styles.toggleIcon}>
+        {/* <ThemeIcon width={140} height={19} /> */}
+        <ThemeIcon width={16} height={16} />
+      </span>
     </button>
   );
 };

@@ -9,14 +9,14 @@
   background-color: var(--bg-color);  
 
   @include dotted-bg-overlay(
-    rgba(0,0,0,0.05), // برای light
+    rgba(0,0,0,0.05),
     1px,
     20px
   );
 
   body.dark & {
     @include dotted-bg-overlay(
-      rgba(255,255,255,0.06), // برای dark
+      rgba(255,255,255,0.06), 
       1px,
       20px
     );
@@ -80,7 +80,7 @@
   &::before {
     content: "";
     position: absolute;
-    inset: -60px; // bigger spread around
+    inset: -60px; 
 
     background: radial-gradient(
       circle,
@@ -89,7 +89,7 @@
       transparent 90%
     );
 
-    filter: blur(50px); // stronger blur for more glow
+    filter: blur(50px); 
     z-index: -1;
     pointer-events: none;
   }
@@ -149,7 +149,7 @@
   }
   
   body.dark & {
-    background: $light-submit-button; // Keep green in both themes
+    background: $light-submit-button; 
   }
 }
 
@@ -239,7 +239,7 @@
   border-radius: 24px;
   
   body.dark & {
-    background-color: #2a1a1a; /* Dark red-tinted background for dark mode */
+    background-color: #2a1a1a; 
   }
   
   &:before {
@@ -254,9 +254,8 @@
     border-radius: 50%;
   }
   
-  // Fix: Move body.dark before the pseudo-element
   body.dark &:before {
-    background-color: #ff6666; /* Light red knob in dark mode */
+    background-color: #ff6666; 
   }
 }
 
@@ -264,7 +263,7 @@
   background-color: #5DD095;
   
   body.dark & {
-    background-color: #ff4444; /* Red background when checked in dark mode */
+    background-color: #ff4444;
   }
 }
 
@@ -272,14 +271,13 @@
   background-color: white;
 }
 
-// Fix: Separate rule for dark mode checked knob
 body.dark .toggleInput:checked + .toggleSlider:before {
   background-color: #ffffff;
 }
 
 .avatarContainer {
   display: flex;
-  align-items: flex-start;
+  align-items: end;
   gap: $spacing-lg;
 }
 
@@ -298,9 +296,11 @@ body.dark .toggleInput:checked + .toggleSlider:before {
 }
 
 .avatarInfo {
+  height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end !important; 
   gap: $spacing-sm;
 }
 
