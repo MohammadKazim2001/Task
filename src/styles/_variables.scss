@@ -1,3 +1,67 @@
+// // Light Theme (Figma)
+// $light-bg: #ffffff00;
+// $gray-bg: rgb(229, 231, 235);
+// $light-surface: #565dbe3f;
+// $light-text: #1a1a1a;
+// $light-border: #e0e0e0;
+// $light-primary: #007bff;
+// $light-primary-hover: #0056b3;
+// $light-error: #dc3545;
+// $light-submit-button: #5DD095;
+
+// // Dark Theme
+// $dark-bg: #061328;
+// $dark-surface: #16164b;
+// $dark-text: #ffffff;
+// $dark-border: #333333;
+// $dark-primary: #4d9eff;
+// $dark-primary-hover: #7bb3ff;
+
+// // Breakpoints
+// $mobile: 375px;
+// $tablet: 768px;
+// $desktop: 1440px;
+
+// // Spacing
+// $spacing-xs: 4px;
+// $spacing-sm: 8px;
+// $spacing-md: 16px;
+// $spacing-lg: 24px;
+// $spacing-xl: 32px;
+
+
+// // Add to the end of your variables.scss file
+// :root {
+//   --light-bg: #{$gray-bg};
+//   --dark-bg: #{$dark-bg};
+//   --light-text: #{$light-text};
+//   --dark-text: #{$dark-text};
+//   --light-surface: #{$light-surface};
+//   --dark-surface: #{$dark-surface};
+//   --light-border: #{$light-border};
+//   --dark-border: #{$dark-border};
+//   --light-primary: #{$light-primary};
+//   --dark-primary: #{$dark-primary};
+// }
+
+// body {
+//   --bg-color: #{$gray-bg};
+//   --text-color: #{$light-text};
+//   --surface-color: #{$light-surface};
+//   --border-color: #{$light-border};
+//   --primary-color: #{$light-primary};
+// }
+
+// body.dark {
+//   --bg-color: #{$dark-bg};
+//   --text-color: #{$dark-text};
+//   --surface-color: #{$dark-surface};
+//   --border-color: #{$dark-border};
+//   --primary-color: #{$dark-primary};
+// }
+
+
+
 // Light Theme (Figma)
 $light-bg: #ffffff00;
 $gray-bg: rgb(229, 231, 235);
@@ -28,3 +92,48 @@ $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
+
+// CSS Custom Properties (Variables)
+:root {
+  // RGB versions for rgba() usage
+  --primary-rgb: 0, 123, 255;
+  --dark-primary-rgb: 77, 158, 255;
+}
+
+body {
+  // Background colors
+  --bg-color: #{$gray-bg};
+  --surface-color: #{$light-surface};
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  
+  // Text colors
+  --text-color: #{$light-text};
+  --placeholder-color: #999999;
+  
+  // Border colors
+  --border-color: #{$light-border};
+  
+  // Primary colors
+  --primary-color: #{$light-primary};
+  --primary-rgb: 0, 123, 255;
+}
+
+body.dark {
+  // Background colors
+  --bg-color: #{$dark-bg};
+  --surface-color: #{$dark-surface};
+  --card-bg: #{$dark-surface};
+  --input-bg: #{$dark-bg};
+  
+  // Text colors
+  --text-color: #{$dark-text};
+  --placeholder-color: #666666;
+  
+  // Border colors
+  --border-color: #{$dark-border};
+  
+  // Primary colors
+  --primary-color: #{$dark-primary};
+  --primary-rgb: 77, 158, 255;
+}

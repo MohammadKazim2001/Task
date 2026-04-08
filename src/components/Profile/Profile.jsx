@@ -63,8 +63,6 @@ export const Profile = ({ userData, onLogout }) => {
   };
 
   const handleBackToRanking = () => {
-    // Add your navigation logic here
-    // Example: window.history.back() or navigate to ranking page
     alert("Ranking page coming soon!");
   };
 
