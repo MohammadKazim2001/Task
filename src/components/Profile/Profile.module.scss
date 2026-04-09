@@ -2,8 +2,8 @@
 @use '../../styles/mixins' as *;
 
 .wrapper {
-    max-width: 1440px;
-   margin: 0 auto;  // Center the content
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 10px 170px;
   min-height: 100vh;
   background-color: var(--bg-color);
@@ -13,14 +13,14 @@
   @include dotted-bg-overlay(
     rgba(37, 30, 30, 0.2),
     1px,
-    20px
+    10px
   );
 
   :global(body.dark) & {
     @include dotted-bg-overlay(
-      rgba(149, 192, 148, 0.63),
+      rgb(58, 62, 58),
       1px,
-      20px
+      10px
     );
   }
 
@@ -57,7 +57,7 @@
   border: none;
   font-size: 14px;
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--dark-text);
   transition: all 0.3s ease;
   padding: $spacing-sm $spacing-md;
   border-radius: 8px;
@@ -71,13 +71,17 @@
     font-size: 12px;
     padding: $spacing-xs $spacing-sm;
   }
+
+  :global(body.dark) & {
+    color: var(--light-text); 
+  }
 }
 
 .profileIconWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   
   svg {
     display: block;
@@ -110,7 +114,9 @@
 
 .sidebar {
   width: 280px;
-  padding: $spacing-xl;
+  padding-top: 0%;
+  padding-left: $spacing-xl;
+  padding-right: $spacing-xl;
   flex-shrink: 0;
 
   @media (max-width: $tablet) {
@@ -135,9 +141,9 @@
     inset: -60px;
     background: radial-gradient(
       circle,
-      rgba(var(--glow-rgb), 0.25) 0%,
-      rgba(var(--glow-rgb), 0.1) 70%,
-      transparent 90%
+      rgba(var(--glow-rgb), 0.2) 10%,
+      rgba(var(--glow-rgb), 0.02) 100%,
+      transparent 100%
     );
     filter: blur(50px);
     z-index: -1;
@@ -217,6 +223,7 @@
 
 .main {
   flex: 1;
+  margin-top: 40px;
   padding: $spacing-xl;
   max-width: 792px; 
   min-width: 0; 

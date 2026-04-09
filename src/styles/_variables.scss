@@ -2,7 +2,7 @@
 $light-bg: #ffffff00;
 $gray-bg: rgb(244, 246, 249);
 $light-surface: #565dbe3f;
-$light-text: #1a1a1a;
+$light-text: #ffffff;
 $gray-text: #1a1919;
 $login-bg: #5f717b;
 $white-bg: #ffffff;
@@ -21,7 +21,7 @@ $dark-border: #001324;
 $dark-bg-input: #001A30;
 $dark-surface: #00203A;
 $dark-surface-profile: #001A30;
-$dark-text: #ffffff;
+$dark-text: #000000;
 $dark-border: #193044;
 $dark-primary: #4d9eff;
 $dark-primary-hover: #7bb3ff;
@@ -36,15 +36,15 @@ $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
-$spacing-xl: 32px;
+$spacing-xl: 38px;
 
 // CSS Custom Properties (Variables)
 :root {
   // RGB versions for rgba() usage
   --primary-rgb: 0, 123, 255;
   --dark-primary-rgb: 77, 158, 255;
-  // --glow-rgb: 93, 208, 149;
-  --glow-rgb: 50, 180, 100;
+  // --glow-rgb: 50, 180, 100;
+  --glow-rgb: 100, 210, 150;
 }
 
 body {
@@ -74,11 +74,12 @@ body.dark {
   --input-bg: #{$dark-bg-input};
   
   // Text colors
-  --text-color: #{$dark-text};
+  --text-color: #{$light-text};
   --placeholder-color: #666666;
   
   // Border colors
   --border-color: #{$dark-border};
+  --dark-text: #{$dark-text};
   --border-white: #{$border-white};
   
   // Primary colors
