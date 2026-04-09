@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import styles from "./Profile.module.scss";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
@@ -7,6 +7,7 @@ import avatar from "../../assets/avatar.JPG";
 
 export const Profile = ({ userData, onLogout }) => {
   const [profile, setProfile] = useLocalStorage("userData", userData);
+  const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
     alias: profile?.profile?.alias || "",
     ratingPublic: profile?.profile?.ratingPublic !== false,
@@ -32,10 +33,8 @@ export const Profile = ({ userData, onLogout }) => {
       profile: {
         alias: formData.alias,
         ratingPublic: formData.ratingPublic,
-        avatar: profile?.profile?.avatar || {
-          name: "Jeev Yadav",
-          date: "24.02.25",
-        },
+
+        avatar: profile?.profile?.avatar || null,
         contacts: {
           email: formData.email,
           vk: formData.vk,
@@ -58,8 +57,44 @@ export const Profile = ({ userData, onLogout }) => {
     }
   };
 
-  const handleAvatarChange = () => {
-    alert("Avatar change function will be available in the next version");
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const base64 = reader.result;
+
+      const updatedData = {
+        ...profile,
+        profile: {
+          ...profile.profile,
+          avatar: {
+            image: base64,
+            name: file.name,
+            date: new Date().toLocaleDateString(),
+          },
+        },
+      };
+
+      setProfile(updatedData);
+    };
+
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  };
+
+  const handleDeleteAvatar = () => {
+    const updatedData = {
+      ...profile,
+      profile: {
+        ...profile.profile,
+        avatar: null,
+      },
+    };
+
+    setProfile(updatedData);
   };
 
   const handleBackToRanking = () => {
@@ -118,40 +153,61 @@ export const Profile = ({ userData, onLogout }) => {
 
               {/* Alias Section */}
               <section className={styles.card}>
-                <h3 className={styles.cardTitle}>Profile alias</h3>
+                {/* <h3 className={styles.cardTitle}>Profile alias</h3> */}
+                <h3 className={styles.cardTitle}>Profile Name</h3>
                 <input
                   type="text"
                   name="alias"
                   value={formData.alias}
                   onChange={handleChange}
                   className={styles.input}
-                  placeholder="Enter name"
+                  placeholder="Enter your name"
                 />
               </section>
 
               {/* Avatar Section */}
               <section className={styles.card}>
                 <h3 className={styles.cardTitle}>Avatar</h3>
+
                 <div className={styles.avatarContainer}>
                   <div className={styles.avatarWrapper}>
                     <img
-                      // src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
-                      src={avatar}
+                      src={profile?.profile?.avatar?.image || avatar}
                       alt="Avatar"
                       className={styles.avatar}
                     />
                   </div>
+
                   <div className={styles.avatarInfo}>
-                    <p className={styles.avatarDate}>Uploaded 24.02.25</p>
-                    <p className={styles.avatarName}>
-                      name.jpg{" "}
-                      <button type="button" className={styles.deleteLink}>
-                        Delete
-                      </button>
+                    <p className={styles.avatarDate}>
+                      Uploaded {profile?.profile?.avatar?.date || "—"}
                     </p>
+
+                    <p className={styles.avatarName}>
+                      {profile?.profile?.avatar?.name || "No file"}
+                      {profile?.profile?.avatar?.image && (
+                        <button
+                          type="button"
+                          onClick={handleDeleteAvatar}
+                          className={styles.deleteLink}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </p>
+
+                    {/* Hidden file input */}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      ref={fileInputRef}
+                      onChange={handleAvatarChange}
+                      style={{ display: "none" }}
+                    />
+
                     <button
                       type="button"
-                      onClick={handleAvatarChange}
+                      onClick={() => fileInputRef.current.click()}
                       className={styles.changeButton}
                     >
                       Change
