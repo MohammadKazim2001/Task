@@ -89,7 +89,7 @@ export const Profile = ({ userData, onLogout }) => {
               <button className={`${styles.navItem} ${styles.navItemActive}`}>
                 Profile
               </button>
-              <button className={styles.navItem_project}>Project Niches</button>
+              <button className={styles.navItem_project}>Projects</button>
             </nav>
           </div>
         </aside>
