@@ -7,17 +7,19 @@ $gray-text: #1a1919;
 $login-bg: #5f717b;
 $white-bg: #ffffff;
 
-$light-border: #e0e0e0;
+$light-border: #D7D8DA;
 $light-primary: #007bff;
 $light-primary-hover: #0056b3;
 $light-error: #dc3545;
-$light-submit-button: #5DD095;
+$light-submit-button: #11E5B3;
 
 // Dark Theme
-$dark-bg: #061328;
-$dark-surface: #0c1934;
+$dark-bg: #001324;
+$dark-bg-input: #001A30;
+$dark-surface: #00203A;
+$dark-surface-profile: #001A30;
 $dark-text: #ffffff;
-$dark-border: #333333;
+$dark-border: #193044;
 $dark-primary: #4d9eff;
 $dark-primary-hover: #7bb3ff;
 
@@ -64,9 +66,9 @@ body {
 body.dark {
   // Background colors
   --bg-color: #{$dark-bg};
-  --surface-color: #{$dark-surface};
-  --card-bg: #{$dark-surface};
-  --input-bg: #{$dark-bg};
+  --surface-color: #{$dark-surface-profile};
+  --card-bg: #{$dark-surface-profile};
+  --input-bg: #{$dark-bg-input};
   
   // Text colors
   --text-color: #{$dark-text};

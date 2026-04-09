@@ -6,6 +6,7 @@ export const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,26 +31,31 @@ export const Login = ({ onLogin }) => {
       return;
     }
 
-    const userData = {
-      email,
-      profile: {
-        alias: "",
-        ratingPublic: true,
-        avatar: {
-          name: "Jeev Yadav",
-          date: "24.02.25",
-        },
-        contacts: {
-          email: email,
-          vk: "",
-          telegram: "",
-          whatsapp: "",
-        },
-      },
-    };
+    setIsLoading(true);
 
-    localStorage.setItem("userData", JSON.stringify(userData));
-    onLogin(userData);
+    setTimeout(() => {
+      const userData = {
+        email,
+        profile: {
+          alias: "",
+          ratingPublic: true,
+          avatar: {
+            image: null,
+            name: "",
+            date: "",
+          },
+          contacts: {
+            email: email,
+            vk: "",
+            telegram: "",
+            whatsapp: "",
+          },
+        },
+      };
+      localStorage.setItem("userData", JSON.stringify(userData));
+      onLogin(userData);
+      setIsLoading(false);
+    }, 500);
   };
 
   return (
@@ -59,7 +65,9 @@ export const Login = ({ onLogin }) => {
       </div>
       <div className={styles.container}>
         <div className={styles.card}>
-          <button className={styles.closeButton}>×</button>
+          <button className={styles.closeButton} aria-disabled="true" disabled>
+            ×
+          </button>
           <h1 className={styles.title}>Registration / Login</h1>
 
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -102,8 +110,12 @@ export const Login = ({ onLogin }) => {
 
             {error && <div className={styles.error}>{error}</div>}
 
-            <button type="submit" className={styles.submitButton}>
-              To Register
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={isLoading}
+            >
+              {isLoading ? "Processing..." : "To Register"}
             </button>
           </form>
         </div>

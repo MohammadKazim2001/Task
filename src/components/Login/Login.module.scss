@@ -22,7 +22,7 @@
 }
 
 .card {
-  max-width: 600px;
+  max-width: 586px;
   width: 100%;
   background: $white-bg;
   border-radius: 24px;
@@ -45,12 +45,11 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: #000;
+  background: #1F2122;
   color: #fff;
   border: none;
   font-size: 24px;
   font-weight: 300;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,14 +59,8 @@
   padding-bottom: 5px;
   
   :global(body.dark) & {
-    background: #5DD095;
-  color: #000;
-
-    
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.1);
-    }
+    background: #11E5B3;
+    color: #1F2122;
   }
 }
 
@@ -165,11 +158,11 @@
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
-  padding: 5px;
   background: var(--input-bg);
   border: 2px solid #000;
-  border-radius: 5px; 
+  border-radius: 4px;
   position: relative;
+  transition: all 0.2s ease;
   
   // Checked state
   &:checked {
@@ -181,31 +174,26 @@
       position: absolute;
       color: white;
       font-size: 12px;
+      font-weight: bold;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
   }
-
+  
+  // Dark mode
   :global(body.dark) & {
-    background: var(--input-bg);
     border-color: #fff;
     
     &:checked {
       background: #fff;
       border-color: #fff;
+      
       &::after {
-      content: '✓';
-      position: absolute;
-      color: #000;
-      font-size: 12px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+        color: #000;
+      }
     }
   }
-  
 }
 
 .checkboxText {
@@ -219,7 +207,7 @@
 }
 
 .term_privacy{
-  color:#4bdc91;
+  color:#11E5B3;
 }
 
 .error {

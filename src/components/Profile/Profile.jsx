@@ -8,6 +8,7 @@ import avatar from "../../assets/avatar.JPG";
 export const Profile = ({ userData, onLogout }) => {
   const [profile, setProfile] = useLocalStorage("userData", userData);
   const fileInputRef = useRef(null);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [formData, setFormData] = useState({
     alias: profile?.profile?.alias || "",
     ratingPublic: profile?.profile?.ratingPublic !== false,
@@ -45,16 +46,13 @@ export const Profile = ({ userData, onLogout }) => {
     };
 
     setProfile(updatedData);
-    alert("Changes applied!");
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 3000);
   };
 
   const handleClear = () => {
-    if (
-      window.confirm("Are you sure you want to log out and clear your data?")
-    ) {
-      localStorage.removeItem("userData");
-      if (onLogout) onLogout();
-    }
+    localStorage.removeItem("userData");
+    if (onLogout) onLogout();
   };
 
   const handleAvatarChange = (e) => {
@@ -97,22 +95,27 @@ export const Profile = ({ userData, onLogout }) => {
     setProfile(updatedData);
   };
 
-  const handleBackToRanking = () => {
-    alert("Ranking page coming soon!");
-  };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.topBar}>
-        <button onClick={handleBackToRanking} className={styles.backButton}>
+        <button
+          className={styles.backButton}
+          style={{ cursor: "not-allowed", opacity: 0.6 }}
+          disabled
+        >
           ← Back to ranking
         </button>
         <ThemeToggle />
       </div>
-
       <div className={styles.profileIconWrapper}>
         <ProfileIcon />
       </div>
+
+      {showSuccessMessage && (
+        <div className={styles.successMessage}>
+          Changes applied successfully!
+        </div>
+      )}
 
       {/* Main Layout */}
       <div className={styles.layout}>
@@ -124,7 +127,13 @@ export const Profile = ({ userData, onLogout }) => {
               <button className={`${styles.navItem} ${styles.navItemActive}`}>
                 Profile
               </button>
-              <button className={styles.navItem_project}>Projects</button>
+              <button
+                className={styles.navItem_project}
+                disabled
+                style={{ cursor: "not-allowed", opacity: 0.6 }}
+              >
+                Projects
+              </button>
             </nav>
           </div>
         </aside>
