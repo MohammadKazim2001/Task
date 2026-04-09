@@ -64,8 +64,6 @@
   }
 }
 
-
-
 .title {
   font-size: 28px;
   margin-bottom: $spacing-xl;
@@ -164,7 +162,6 @@
   position: relative;
   transition: all 0.2s ease;
   
-  // Checked state
   &:checked {
     background: #000;
     border-color: #000;
@@ -181,7 +178,6 @@
     }
   }
   
-  // Dark mode
   :global(body.dark) & {
     border-color: #fff;
     
@@ -227,12 +223,6 @@
   font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease;
-  
-  &:hover {
-    background: #48d18a;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba($light-primary, 0.3);
-  }
   
   :global(body.dark) & {
     color: #000;    

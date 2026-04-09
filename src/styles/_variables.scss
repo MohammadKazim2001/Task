@@ -6,15 +6,18 @@ $light-text: #1a1a1a;
 $gray-text: #1a1919;
 $login-bg: #5f717b;
 $white-bg: #ffffff;
+$input-border-light: #a9a9ab;
 
+$border-white: #ffffff;
 $light-border: #D7D8DA;
 $light-primary: #007bff;
 $light-primary-hover: #0056b3;
 $light-error: #dc3545;
-$light-submit-button: #11E5B3;
+$light-submit-button: linear-gradient(135deg, #45E4BF, #08CFA0);;
 
 // Dark Theme
 $dark-bg: #001324;
+$dark-border: #001324;
 $dark-bg-input: #001A30;
 $dark-surface: #00203A;
 $dark-surface-profile: #001A30;
@@ -56,7 +59,7 @@ body {
   --placeholder-color: #999999;
   
   // Border colors
-  --border-color: #{$light-border};
+  --border-color-light: #{$input-border-light};
   
   // Primary colors
   --primary-color: #{$light-primary};
@@ -76,6 +79,7 @@ body.dark {
   
   // Border colors
   --border-color: #{$dark-border};
+  --border-white: #{$border-white};
   
   // Primary colors
   --primary-color: #{$dark-primary};
