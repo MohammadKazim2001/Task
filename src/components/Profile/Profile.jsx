@@ -10,7 +10,7 @@ export const Profile = ({ userData, onLogout }) => {
   const fileInputRef = useRef(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [formData, setFormData] = useState({
-    alias: profile?.profile?.alias || "",
+    name: profile?.profile?.name || "",
     ratingPublic: profile?.profile?.ratingPublic !== false,
     email: profile?.email || "",
     vk: profile?.profile?.contacts?.vk || "",
@@ -32,7 +32,7 @@ export const Profile = ({ userData, onLogout }) => {
     const updatedData = {
       email: formData.email,
       profile: {
-        alias: formData.alias,
+        name: formData.name,
         ratingPublic: formData.ratingPublic,
 
         avatar: profile?.profile?.avatar || null,
@@ -160,14 +160,13 @@ export const Profile = ({ userData, onLogout }) => {
                 </div>
               </section>
 
-              {/* Alias Section */}
+              {/* Name Section */}
               <section className={styles.card}>
-                {/* <h3 className={styles.cardTitle}>Profile alias</h3> */}
                 <h3 className={styles.cardTitle}>Profile Name</h3>
                 <input
                   type="text"
-                  name="alias"
-                  value={formData.alias}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   className={styles.input}
                   placeholder="Enter your name"

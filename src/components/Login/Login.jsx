@@ -72,9 +72,6 @@ export const Login = ({ onLogin }) => {
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputGroup}>
-              <label htmlFor="email" className={styles.label}>
-                Your email
-              </label>
               <input
                 id="email"
                 type="email"
@@ -84,7 +81,7 @@ export const Login = ({ onLogin }) => {
                   setError("");
                 }}
                 className={`${styles.input} ${error ? styles.inputError : ""}`}
-                placeholder="example@mail.com"
+                placeholder="Your email"
               />
             </div>
 
@@ -115,7 +112,7 @@ export const Login = ({ onLogin }) => {
               className={styles.submitButton}
               disabled={isLoading}
             >
-              {isLoading ? "Processing..." : "To Register"}
+              {isLoading ? "Processing..." : "Register"}
             </button>
           </form>
         </div>

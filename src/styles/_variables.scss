@@ -11,6 +11,7 @@ $input-border-light: #a9a9ab;
 $border-white: #ffffff;
 $light-border: #D7D8DA;
 $light-primary: #007bff;
+$light-primary-input: #45E4BF;
 $light-primary-hover: #0056b3;
 $light-error: #dc3545;
 $light-submit-button: linear-gradient(135deg, #45E4BF, #08CFA0);;
@@ -63,6 +64,7 @@ body {
   
   // Primary colors
   --primary-color: #{$light-primary};
+  --primary-color-input: #{$light-primary-input};
   --primary-rgb: 0, 123, 255;
 }
 
