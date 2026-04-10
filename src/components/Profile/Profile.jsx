@@ -124,7 +124,9 @@ export const Profile = ({ userData, onLogout }) => {
             <h2 className={styles.sidebarTitle}>Settings</h2>
 
             <nav className={styles.nav}>
-              <button className={`${styles.navItem} ${styles.navItemActive}`}>
+              <button
+                className={`${styles.navItem} ${styles.navItemActive} ${styles.navItemActive}`}
+              >
                 Profile
               </button>
               <button
@@ -142,7 +144,7 @@ export const Profile = ({ userData, onLogout }) => {
           <div className={styles.content}>
             <form onSubmit={handleSubmit} className={styles.form}>
               {/* Rating Public Section */}
-              <section className={styles.card}>
+              <section className={styles.card_rating}>
                 <div className={styles.toggleRow}>
                   <span className={styles.label}>
                     Public participation in ranking
@@ -161,7 +163,7 @@ export const Profile = ({ userData, onLogout }) => {
               </section>
 
               {/* Name Section */}
-              <section className={styles.card}>
+              <section className={styles.name_card}>
                 <h3 className={styles.cardTitle}>Profile Name</h3>
                 <input
                   type="text"
@@ -174,7 +176,7 @@ export const Profile = ({ userData, onLogout }) => {
               </section>
 
               {/* Avatar Section */}
-              <section className={styles.card}>
+              <section className={styles.avatar_card}>
                 <h3 className={styles.cardTitle}>Avatar</h3>
 
                 <div className={styles.avatarContainer}>
