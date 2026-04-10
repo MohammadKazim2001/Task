@@ -33,7 +33,7 @@
   }
 
   @media (max-width: $mobile) {
-    padding: 10px 5px;
+    padding: 10px 16px;
   }
 }
 
@@ -42,7 +42,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0;
-  padding: 0 $spacing-md;
+  padding: 0 $spacing-lg;
   flex-wrap: wrap;
   gap: $spacing-md;
 
@@ -112,6 +112,12 @@
 
   @media (max-width: 1024px) { 
     flex-direction: column;
+  }
+
+  @media (max-width: $mobile) {
+    gap: $spacing-md;
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 
@@ -189,12 +195,11 @@
 }
 
 .navItem, .navItem_project {
-  padding: 11px 0;
+  padding: 12px 0;
   border: none;
   background: transparent;
   border-radius: 6px;
   text-align: center;
-  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   color: var(--text-color);
@@ -229,7 +234,7 @@
 .main {
   flex: 1;
   margin-top: 40px;
-  padding: $spacing-xl;
+  padding: 38px 24px;
   max-width: 792px; 
   min-width: 0; 
 
@@ -243,18 +248,23 @@
 }
 
 .content {
-  padding-left: 40px;
-  margin: 0 auto;
+  margin-left: 57px;
 
   @media (max-width: $tablet) {
     max-width: 100%;
+    margin-left: 0; 
+  }
+  
+  @media (max-width: $mobile) {
+    margin-left: 0;
+    padding-left: 0; 
   }
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: 18px;
 
   @media (max-width: $mobile) {
     gap: $spacing-md;
@@ -264,7 +274,7 @@
 .card_rating {
   background: var(--card-bg, white);
   border-radius: 12px;
-  padding: 22px;
+  padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   @media (max-width: $mobile) {
@@ -275,7 +285,7 @@
 .name_card {
   background: var(--card-bg, white);
   border-radius: 12px;
-  padding: 18px;
+  padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   @media (max-width: $mobile) {
@@ -307,8 +317,8 @@
 }
 
 .cardTitle {
-  font-size: 16px;
-  margin-bottom: $spacing-md;
+  font-size: 15px;
+  margin-bottom: 12px;
   color: var(--text-color);
 
   @media (max-width: $mobile) {
@@ -317,7 +327,7 @@
   }
 }
 .cardTitleContact {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: $spacing-sm;
   color: var(--text-color);
 
@@ -328,7 +338,7 @@
 }
 
 .cardTitleContact {
-  margin-top: $spacing-lg;
+  margin-top: 28px;
 
   @media (max-width: $mobile) {
     margin-top: $spacing-md;
@@ -344,7 +354,8 @@
 }
 
 .label {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--text-color);
 
   @media (max-width: $mobile) {
@@ -426,7 +437,7 @@
 .avatarContainer {
   display: flex;
   align-items: flex-end;
-  gap: $spacing-lg;
+  gap: $spacing-md;
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -435,9 +446,10 @@
 }
 
 .avatarWrapper {
-  width: 180px;
-  height: 180px;
-  border-radius: 12px;
+  margin-top: 7px;
+  width: 177px;
+  height: 179px;
+  border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
 
@@ -466,12 +478,13 @@
 }
 
 .avatarDate {
-  font-size: 12px;
+  font-size: 10px;
   color: #a4a3a3;
+  margin-bottom: -10px;
 }
 
 .avatarName {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-color);
   margin: 0;
   display: flex;
@@ -506,8 +519,10 @@
   background: $light-submit-button;
   color: #fff;
   border: none;
-  padding: 8px 36px;
+  padding: 8px 35px;
   border-radius: 5px;
+  margin-left: 2px;
+  margin-bottom: 1px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -538,8 +553,19 @@
 
 .fieldLabel {
   display: block;
-  font-size: 12px;
+  font-size: 5px;
   margin-bottom: $spacing-xs;
+  color: var(--text-color);
+
+  @media (max-width: $mobile) {
+    font-size: 13px;
+  }
+}
+
+.form_fieldLabel {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
   color: var(--text-color);
 
   @media (max-width: $mobile) {
@@ -549,7 +575,7 @@
 
 .input {
   width: 100%;
-  padding: 8px 16px;
+  padding: 8px 10px;
   border: 1px solid var(--border-color-light);
   border-radius: 5px;
   font-size: 14px;
@@ -566,6 +592,7 @@
   
   &::placeholder {
     color: var(--placeholder-color, #999);
+    font-size: 12px;
   }
 
   :global(body.dark) & {
@@ -590,6 +617,19 @@
   }
 }
 
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: flex-start;
+  margin-top: $spacing-xs;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    gap: $spacing-sm;
+    width: 100%;
+  }
+}
+
 .button {
   border-radius: 5px;
   font-size: 10px;
@@ -597,11 +637,6 @@
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
-
-  @media (max-width: $mobile) {
-    width: 100%;
-    padding: 10px 20px;
-  }
 }
 
 .buttonPrimary {
@@ -617,19 +652,30 @@
   :global(body.dark) & {
     color: #000; 
   }
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    padding: 10px 20px;
+  }
 }
 
 .buttonSecondary {
   background: transparent;
-  border: 1px solid #9f9e9e;
+  border: 1px solid #646464e1;
   color: var(--text-color);
-  padding: 14px 46px;
+  padding: 12px 44px;
   
   &:hover {
     background: rgba(var(--primary-rgb), 0.05);
     border-color: var(--primary-color);
   }
+
+  @media (max-width: $mobile) {
+    width: 100%;
+    padding: 10px 20px;
+  }
 }
+
 
 // Additional responsive improvements for very small devices
 @media (max-width: 480px) {
@@ -638,11 +684,7 @@
   }
 
   .cardTitle, .cardTitleContact {
-    font-size: 14px;
-  }
-
-  .label {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .avatarWrapper {
@@ -650,12 +692,8 @@
     height: 100px;
   }
 
-  .avatarInfo {
-    gap: $spacing-xs;
-  }
-
   .avatarName {
-    font-size: 12px;
+    font-size: 5px;
   }
 
   .deleteLink, .changeButton {

@@ -103,7 +103,7 @@ export const Profile = ({ userData, onLogout }) => {
           style={{ cursor: "not-allowed", opacity: 0.6 }}
           disabled
         >
-          ← Back to ranking
+          <span className="arrow">←</span> Back to ranking
         </button>
         <ThemeToggle />
       </div>
@@ -124,9 +124,7 @@ export const Profile = ({ userData, onLogout }) => {
             <h2 className={styles.sidebarTitle}>Settings</h2>
 
             <nav className={styles.nav}>
-              <button
-                className={`${styles.navItem} ${styles.navItemActive} ${styles.navItemActive}`}
-              >
+              <button className={`${styles.navItem} ${styles.navItemActive}`}>
                 Profile
               </button>
               <button
@@ -164,7 +162,7 @@ export const Profile = ({ userData, onLogout }) => {
 
               {/* Name Section */}
               <section className={styles.name_card}>
-                <h3 className={styles.cardTitle}>Profile Name</h3>
+                <h3 className={styles.cardTitle}>Profile Title</h3>
                 <input
                   type="text"
                   name="name"
@@ -228,7 +226,7 @@ export const Profile = ({ userData, onLogout }) => {
                 <h3 className={styles.cardTitleContact}>Contacts</h3>
 
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel}>Email</label>
+                  <label className={styles.form_fieldLabel}>Email</label>
                   <input
                     type="email"
                     name="email"
@@ -240,7 +238,7 @@ export const Profile = ({ userData, onLogout }) => {
                 </div>
 
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel}>VKontakte</label>
+                  <label className={styles.form_fieldLabel}>VKontakte</label>
                   <input
                     type="url"
                     name="vk"
@@ -252,7 +250,7 @@ export const Profile = ({ userData, onLogout }) => {
                 </div>
 
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel}>Telegram</label>
+                  <label className={styles.form_fieldLabel}>Telegram</label>
                   <input
                     type="url"
                     name="telegram"
@@ -264,7 +262,7 @@ export const Profile = ({ userData, onLogout }) => {
                 </div>
 
                 <div className={styles.field}>
-                  <label className={styles.fieldLabel}>WhatsApp</label>
+                  <label className={styles.form_fieldLabel}>WhatsApp</label>
                   <input
                     type="tel"
                     name="whatsapp"
