@@ -643,7 +643,7 @@
   background: $light-submit-button;
   color: #fff;
   padding: 14px 57px;
-
+  
   &:hover {
     opacity: 0.9;
     transform: translateY(-1px);
@@ -661,14 +661,19 @@
 
 .buttonSecondary {
   background: transparent;
-  border: 1px solid #878787;
-  color: #878787;
+  border: 1px solid #242424;
+  color: #242424;
   padding: 12px 44px;
   
   &:hover {
     background: rgba(var(--primary-rgb), 0.05);
-    border-color: var(--primary-color);
+    border-color: $light-primary-input;
   }
+
+    :global(body.dark) & {
+      border: 1px solid #878787;
+      color: #878787;
+    }
 
   @media (max-width: $mobile) {
     width: 100%;
