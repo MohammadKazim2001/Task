@@ -1,12 +1,10 @@
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { useProfile } from "../../hooks/useProfile";
 import { AvatarSection } from "./AvatarSection";
-import { ContactsSection } from "./ContactsSection";
 import { FormActions } from "./FormActions";
 import ProfileIcon from "../ProfileIcon";
 import styles from "./Profile.module.scss";
 
-// Sub-components with styles imported
 const SuccessMessage = ({ show }) =>
   show && (
     <div className={styles.successMessage}>Changes applied successfully!</div>
@@ -115,12 +113,12 @@ export const Profile = ({ userData, onLogout }) => {
 
               <AvatarSection
                 profile={profile}
+                formData={formData}
                 onAvatarChange={handleAvatarChange}
                 onDeleteAvatar={handleDeleteAvatar}
+                onFormChange={handleChange}
                 fileInputRef={fileInputRef}
               />
-
-              <ContactsSection formData={formData} onChange={handleChange} />
 
               <FormActions onClear={handleClear} onSubmit={handleSubmit} />
             </form>

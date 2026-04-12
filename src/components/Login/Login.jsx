@@ -37,13 +37,9 @@ export const Login = ({ onLogin }) => {
       const userData = {
         email,
         profile: {
-          alias: "",
+          name: "", // Fixed: changed from 'alias' to 'name'
           ratingPublic: true,
-          avatar: {
-            image: null,
-            name: "",
-            date: "",
-          },
+          avatar: null, // Fixed: changed from object to null
           contacts: {
             email: email,
             vk: "",
